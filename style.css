@@ -1,0 +1,511 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-gray: #eee;
+    --dark-bg: #000;
+    --dark-surface: #1a1a1a;
+    --dark-surface-light: #2a2a2a;
+    --dark-border: #333;
+    --dark-text: #ffffff;
+    --dark-text-secondary: #b0b0b0;
+    --dark-hover: #333;
+    --dark-card-bg: #252525;
+    --light-bg: #ffffff;
+    --light-text: #000000;
+    --light-text-secondary: #525252;
+    --light-shadow: rgba(0, 0, 0, 0.2);
+    --light-card-shadow: rgba(0, 0, 0, 0.1);
+    --light-hover: #f5f5f5;
+}
+
+html.dark-theme {
+    color: var(--dark-text);
+    background: var(--dark-bg);
+}
+
+html.dark-theme .container {
+    background-color: var(--dark-bg);
+}
+
+html.dark-theme #search-weather>div:first-child {
+    background-color: var(--dark-surface);
+}
+
+html.dark-theme #search-weather>div:first-child>input {
+    background-color: var(--dark-surface);
+    color: var(--dark-text);
+}
+
+html.dark-theme #search-weather>div:first-child>input::placeholder {
+    color: var(--dark-text-secondary);
+}
+
+html.dark-theme #gear-icon {
+    background-color: var(--dark-surface);
+    color: var(--dark-text);
+}
+
+html.dark-theme .dropdown-content {
+    background-color: var(--dark-surface-light);
+    color: var(--dark-text);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+html.dark-theme .dropdown-item {
+    border-bottom: 1px solid var(--dark-border);
+    color: var(--dark-text);
+}
+
+html.dark-theme .dropdown-item:hover {
+    background-color: var(--dark-hover);
+}
+
+html.dark-theme .text-secondary {
+    color: var(--dark-text-secondary);
+}
+
+html.dark-theme h2 {
+    color: var(--dark-text);
+}
+
+html.dark-theme #current-weather>div>p:last-child {
+    color: var(--dark-text);
+}
+
+html.dark-theme #current>div:first-child>div:nth-child(2) p:first-child {
+    color: var(--dark-text);
+}
+
+html.dark-theme #current>div:first-child>div:nth-child(2) p:last-child {
+    color: var(--dark-text);
+}
+
+html.dark-theme #current>div:nth-child(2)>div>div p {
+    color: var(--dark-text);
+}
+
+html.dark-theme #current>div:nth-child(2) p {
+    color: var(--dark-text-secondary);
+}
+
+html.dark-theme #current>div:last-child>p {
+    color: var(--dark-text);
+}
+
+html.dark-theme .temp-card {
+    background-color: var(--dark-card-bg);
+    border: 1px solid var(--dark-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: var(--dark-text);
+}
+
+html.dark-theme .temp-card h3 {
+    color: var(--dark-text);
+}
+
+html.dark-theme .temp-card .date {
+    color: var(--dark-text-secondary);
+}
+
+html.dark-theme .temp-high,
+html.dark-theme .temp-low {
+    background-color: var(--dark-surface);
+    border: 1px solid var(--dark-border);
+}
+
+.container {
+    height: 100vh;
+    padding: 20px;
+    width: 75%;
+    margin: auto;
+}
+
+#search-weather {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+#search-weather>div:first-child {
+    background-color: var(--main-gray);
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 999px;
+    padding: 10px;
+}
+
+#search-weather>div:first-child>input {
+    width: 90%;
+    border: none;
+    outline: none;
+    padding: 5px;
+    background-color: var(--main-gray);
+    font-size: 17px;
+}
+
+#gear-icon {
+    background-color: var(--main-gray);
+    border-radius: 999px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--light-bg);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px var(--light-shadow);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.dropdown-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 1.15rem;
+    border-bottom: 1px solid var(--main-gray);
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: var(--main-gray);
+}
+
+.text-secondary {
+    color: var(--light-text-secondary);
+    font-size: 1.3rem;
+}
+
+#current-weather {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+#current-weather>div {
+    width: 25%;
+    padding: 10px;
+}
+
+#current-weather>div>p:last-child {
+    font-size: 1.2rem;
+    margin-block: 8px;
+}
+
+.mph {
+    display: none;
+}
+
+.kmh {
+    display: inline;
+}
+
+.fahr {
+    display: none;
+}
+
+.celsius {
+    display: inline;
+}
+
+#current {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 2rem;
+    padding: 10px;
+}
+
+#current img {
+    width: 120px;
+    height: 120px;
+}
+
+#current>div:first-child {
+    display: flex;
+}
+
+#current>div:first-child>div:nth-child(2) p:first-child {
+    font-weight: 900;
+    font-size: 4rem;
+}
+
+#current>div:first-child>div:nth-child(2) p:last-child {
+    font-size: 1.6rem;
+    text-transform: capitalize;
+}
+
+#current>div:nth-child(2)>div {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+#current>div:nth-child(2)>div>div p {
+    font-size: 1.6rem;
+    margin: 10px;
+    color: var(--light-text);
+}
+
+#current>div:nth-child(2) p {
+    font-size: 1.2rem;
+    color: var(--light-text-secondary);
+}
+
+#current>div:last-child>p {
+    text-align: right;
+    font-size: 1.4rem;
+    margin-top: 10px;
+}
+
+#this-week-weather {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 10px;
+    overflow-x: auto;
+    flex-wrap: wrap;
+}
+
+.temp-card {
+    border-radius: 16px;
+    padding: 20px;
+    min-width: 30%;
+    flex: 1;
+    max-width: 280px;
+    box-shadow: 0 0 10px 5px var(--light-card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.temp-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.temp-card .date {
+    margin: 0 0 20px 0;
+    font-size: 1rem;
+}
+
+.temp-display {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.temp-high,
+.temp-low {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+}
+
+h2 {
+    margin-block: 10px;
+    font-size: 2rem;
+    padding: 10px;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        width: 85%;
+    }
+
+    #current-weather>div {
+        width: 33.33%;
+    }
+
+    .temp-card {
+        min-width: 45%;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 90%;
+    }
+
+    #current-weather>div {
+        width: 50%;
+    }
+
+    #current>div:first-child>div:nth-child(2) p:first-child {
+        font-size: 3rem;
+    }
+
+    #current img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .temp-card {
+        min-width: 48%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #search-weather {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #search-weather>div:first-child {
+        width: 100%;
+    }
+
+    #gear-icon {
+        align-self: flex-end;
+    }
+
+    #current {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    #current>div:first-child {
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #current>div:nth-child(2)>div {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #current>div:last-child>p {
+        text-align: center;
+    }
+
+    #current-weather>div {
+        width: 50%;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .temp-card {
+        min-width: 100%;
+        max-width: none;
+    }
+
+    #this-week-weather {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    #search-weather>div:first-child>input {
+        font-size: 16px;
+    }
+
+    #current-weather>div {
+        width: 100%;
+        text-align: center;
+    }
+
+    #current>div:first-child>div:nth-child(2) p:first-child {
+        font-size: 2.5rem;
+    }
+
+    #current>div:first-child>div:nth-child(2) p:last-child {
+        font-size: 1.4rem;
+    }
+
+    #current img {
+        width: 80px;
+        height: 80px;
+    }
+
+    #current>div:nth-child(2)>div>div p {
+        font-size: 1.4rem;
+        margin: 5px;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .text-secondary {
+        font-size: 1.1rem;
+    }
+
+    .temp-card {
+        padding: 15px;
+    }
+
+    .temp-card h3 {
+        font-size: 1.2em;
+    }
+
+    .temp-high,
+    .temp-low {
+        font-size: 1.1rem;
+        padding: 10px 12px;
+    }
+
+    .dropdown-content {
+        min-width: 180px;
+    }
+
+    .dropdown-item {
+        font-size: 1rem;
+        padding: 10px 14px;
+    }
+}
+
+@media (max-width: 375px) {
+    #current>div:first-child {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #current>div:first-child>div:nth-child(2) p:first-child {
+        font-size: 2rem;
+    }
+
+    #gear-icon {
+        padding: 12px;
+    }
+
+    .temp-card {
+        padding: 12px;
+    }
+}

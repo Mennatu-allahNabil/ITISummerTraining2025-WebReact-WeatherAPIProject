@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+        integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Weather API Project</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="search-weather">
+            <div>
+                <span><i class="bi bi-search"></i></span>
+                <input type="text" name="search-location" id="search-location" readonly>
+                <span><i class="bi bi-x-circle-fill"></i></span>
+            </div>
+            <div></div>
+            <div class="dropdown">
+                <span id="gear-icon"><i class="bi bi-gear-fill"></i></span>
+                <div class="dropdown-content" id="dropdown-menu" style="display: none;">
+                    <div class="dropdown-item" id="temp-switch-btn">Celsius</div>
+                    <div class="dropdown-item" id="speed-switch-btn">km/h</div>
+                    <div class="dropdown-item" id="dark-switch-btn">Light</div>
+                    <div class="dropdown-item">Locations</div>
+                </div>
+            </div>
+        </div>
+        <div id="current">
+
+        </div>
+        <div id="current-weather">
+
+        </div>
+        <div>
+            <h2>This Week</h2>
+            <div id="this-week-weather">
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const gearIcon = document.getElementById('gear-icon');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+        gearIcon.addEventListener('click', function (e) {
+            e.stopPropagation();
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const value = this.getAttribute('data-value');
+                console.log('Selected:', value);
+                dropdownMenu.style.display = 'none';
+            });
+        });
+
+        document.addEventListener('click', function () {
+            dropdownMenu.style.display = 'none';
+        });
+
+        dropdownMenu.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    </script>
+    <script src="api key.js"></script>
+    <script src="script.js"></script>
+    <script>
+        let switchTheme = document.getElementById("dark-switch-btn");
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-theme");
+        }
+        switchTheme.addEventListener("click", () => {
+            document.documentElement.classList.toggle("dark-theme");
+            if (html.classList.contains("dark-theme")) {
+                localStorage.setItem("theme", "dark");
+            } else {
+                localStorage.setItem("theme", "light");
+            }
+        });
+    </script>
+    <script>
+        let switchSpeed = document.getElementById("speed-switch-btn");
+        let kmh = document.getElementsByClassName("kmh");
+        let mph = document.getElementsByClassName("mph");
+
+        switchSpeed.addEventListener("click", () => {
+            let isKmhVisible = window.getComputedStyle(kmh[0]).display !== "none";
+
+            Array.from(kmh).forEach(element => {
+                element.style.display = isKmhVisible ? "none" : "inline";
+            });
+
+            Array.from(mph).forEach(element => {
+                element.style.display = isKmhVisible ? "inline" : "none";
+            });
+
+            switchSpeed.textContent = isKmhVisible ? "mph" : "km/h";
+        });
+    </script>
+    <script>
+        let switchTemp = document.getElementById("temp-switch-btn");
+        let cel = document.getElementsByClassName("celsius");
+        let fahr = document.getElementsByClassName("fahr");
+
+        switchTemp.addEventListener("click", () => {
+            let isCelVisible = window.getComputedStyle(cel[0]).display !== "none";
+
+            Array.from(cel).forEach(element => {
+                element.style.display = isCelVisible ? "none" : "inline";
+            });
+
+            Array.from(fahr).forEach(element => {
+                element.style.display = isCelVisible ? "inline" : "none";
+            });
+
+            switchTemp.textContent = isCelVisible ? "Celsius" : "Fahrenheit";
+        });
+    </script>
+</body>
+
+</html>
