@@ -24,11 +24,11 @@ function renderAllWeatherData(forecastData) {
   const current = forecastData.current;
   const astronomy = forecastData.forecast.forecastday[0].astro;
   const todayForecast = forecastData.forecast.forecastday[0].day;
-  
+
   console.log("Astronomy data:", astronomy);
-  
+
   console.log(forecastData.forecast.forecastday[0]);
-  
+
   currentFore.innerHTML = `
             <div>
                 <div>
@@ -42,11 +42,11 @@ function renderAllWeatherData(forecastData) {
             <div>
                 <div>
                     <div>
-                        <p>Min</p>
+                        <p><i class="bi bi-arrow-down"></i> Min</p>
                         <p><span class="celsius">${todayForecast.mintemp_c}°</span><span class="fahr">${todayForecast.mintemp_f}°</span></p>
                     </div>
                     <div>
-                        <p>Max</p>
+                        <p><i class="bi bi-arrow-up"></i> Max</p>
                         <p><span class="celsius">${todayForecast.maxtemp_c}°</span><span class="fahr">${todayForecast.maxtemp_f}°</span></p>
                     </div>
                 </div>
@@ -60,7 +60,9 @@ function renderAllWeatherData(forecastData) {
     </div>
     <div>
         <p class="text-secondary">Wind</p>
-        <p><span class="kmh">${current.wind_kph} km/h</span><span class="mph">${current.wind_mph} mph</span></p>
+        <p><span class="kmh">${current.wind_kph} km/h</span><span class="mph">${
+    current.wind_mph
+  } mph</span></p>
     </div>
     <div>
         <p class="text-secondary">Sunrise</p>
@@ -84,7 +86,9 @@ function renderAllWeatherData(forecastData) {
     </div>
     <div>
         <p class="text-secondary">Gusts</p>
-        <p><span class="kmh">${current.gust_kph} km/h</span><span class="mph">${current.gust_mph} mph</span></p>
+        <p><span class="kmh">${current.gust_kph} km/h</span><span class="mph">${
+    current.gust_mph
+  } mph</span></p>
     </div>`;
 
   if (forecastData && weekWeather) {

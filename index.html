@@ -25,10 +25,10 @@
             <div class="dropdown">
                 <span id="gear-icon"><i class="bi bi-gear-fill"></i></span>
                 <div class="dropdown-content" id="dropdown-menu" style="display: none;">
-                    <div class="dropdown-item" id="temp-switch-btn">Celsius</div>
-                    <div class="dropdown-item" id="speed-switch-btn">km/h</div>
-                    <div class="dropdown-item" id="dark-switch-btn">Light</div>
-                    <div class="dropdown-item">Locations</div>
+                    <div class="dropdown-item" id="temp-switch-btn"><i class="bi bi-thermometer"></i> Celsius</div>
+                    <div class="dropdown-item" id="speed-switch-btn"><i class="bi bi-speedometer"></i> km/h</div>
+                    <div class="dropdown-item" id="dark-switch-btn"><i class="bi bi-brightness-high"></i> Light</div>
+                    <div class="dropdown-item"><i class="bi bi-geo-alt"></i> Locations</div>
                 </div>
             </div>
         </div>
@@ -79,13 +79,20 @@
         let switchTheme = document.getElementById("dark-switch-btn");
         if (localStorage.getItem("theme") === "dark") {
             document.documentElement.classList.add("dark-theme");
+            switchTheme.innerHTML = '<i class="bi bi-moon"></i> Dark Mode';
+        } else {
+            switchTheme.innerHTML = '<i class="bi bi-brightness-high"></i> Light Mode';
         }
+
         switchTheme.addEventListener("click", () => {
             document.documentElement.classList.toggle("dark-theme");
-            if (html.classList.contains("dark-theme")) {
+            if (document.documentElement.classList.contains("dark-theme")) {
                 localStorage.setItem("theme", "dark");
+                switchTheme.innerHTML = '<i class="bi bi-moon"></i> Dark Mode';
+
             } else {
                 localStorage.setItem("theme", "light");
+                switchTheme.innerHTML = '<i class="bi bi-brightness-high"></i> Light Mode';
             }
         });
     </script>
@@ -105,7 +112,7 @@
                 element.style.display = isKmhVisible ? "inline" : "none";
             });
 
-            switchSpeed.textContent = isKmhVisible ? "mph" : "km/h";
+            switchSpeed.innerHTML = isKmhVisible ? '<i class="bi bi-speedometer"></i> mph' : '<i class="bi bi-speedometer"></i> km/h';
         });
     </script>
     <script>
@@ -124,7 +131,7 @@
                 element.style.display = isCelVisible ? "inline" : "none";
             });
 
-            switchTemp.textContent = isCelVisible ? "Celsius" : "Fahrenheit";
+            switchTemp.innerHTML = isCelVisible ? '<i class="bi bi-thermometer"></i> Celsius' : '<i class="bi bi-thermometer"></i> Fahrenheit';
         });
     </script>
 </body>
